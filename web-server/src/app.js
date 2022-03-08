@@ -1,15 +1,12 @@
 const path = require('path')
 const express = require('express')
+const hbs = require('hbs')
+
+const app = express()
 
 // console.log(__dirname)
 // console.log(path.join(__dirname, '../public'))
 // console.log(path.join(__dirname, '../public/about.html'))
-
-
-const app = express()
-const publicDirectoryPath = path.join(__dirname, '../public')
-
-app.use(express.static(publicDirectoryPath))
 
 // .get lets us configure what the server shuold do
 // app.get('', (req, res) => {
@@ -30,6 +27,41 @@ app.use(express.static(publicDirectoryPath))
 // app.get('/about', (req, res) => {
 //     res.send('<h1>ABOUT</h1>')
 // })
+
+// Define Paths For Express Config:
+const publicDirectoryPath = path.join(__dirname, '../public')
+// customizing hbs path for views 
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
+
+// Setup Handlebars engine and views location
+app.set('view engine', 'hbs');
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
+
+// Setup Static Directory To Serve
+app.use(express.static(publicDirectoryPath))
+
+app.get('', (req, res) => {
+    // render one of our views, express is configured to use the view engine hbs 
+    res.render('index', {
+        title: 'Weather App',
+        name: 'Nancy Pantz'
+    })
+})
+
+app.get('/about', (req, res) => {
+    res.render('about', {
+        title: 'About Me:',
+        name: 'Nancy Pantz'
+    })
+})
+
+app.get('/help', (req, res) => {
+    res.render('help', {
+        message: 'To find help - follow these links:'
+    })
+})
 
 app.get('/weather', (req, res) => {
     res.send({ 
