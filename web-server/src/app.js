@@ -59,7 +59,9 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        message: 'To find help - follow these links:'
+        message: 'To find help - follow these links:',
+        title: 'Help',
+        name: 'Nancy Pantz'
     })
 })
 
