@@ -45,7 +45,7 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req, res) => {
     // render one of our views, express is configured to use the view engine hbs 
     res.render('index', {
-        title: 'Weather App',
+        title: 'Weather',
         name: 'Nancy Pantz'
     })
 })
