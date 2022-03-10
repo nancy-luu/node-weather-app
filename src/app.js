@@ -8,31 +8,6 @@ const forecast = require('./utils/forecast')
 const app = express()
 const port = process.env.PORT || 3000 
 
-// console.log(__dirname)
-// console.log(path.join(__dirname, '../public'))
-// console.log(path.join(__dirname, '../public/about.html'))
-
-// .get lets us configure what the server shuold do
-// app.get('', (req, res) => {
-//     res.send('<h1>WEATHER</h1>')
-// })
-
-// app.get('/help', (req, res) => {
-//     res.send({ 
-//         name: 'Nancy',
-//         age: 29
-//     })
-//     // res.send([
-//     //     {name: 'Nancy'},
-//     //     {name: 'Donna'}
-//     // ])
-// })
-
-// app.get('/about', (req, res) => {
-//     res.send('<h1>ABOUT</h1>')
-// })
-
-
 // Define Paths For Express Config:
 const publicDirectoryPath = path.join(__dirname, '../public')
 // customizing hbs path for views 
